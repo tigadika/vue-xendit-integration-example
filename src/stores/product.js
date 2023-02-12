@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
+
 export const useProductStore = defineStore({
   id: "Product",
   state: () => ({
@@ -37,6 +38,23 @@ export const useProductStore = defineStore({
       }
       this.totalPage = temp
       temp = []
+    },
+    async checkoutHandler(total) {
+      const { data } = await axios({
+        method: "post",
+        url: "https://api.xendit.co/v2/invoices",
+        data: {
+          "external_id": `invoice-${Date.now()}`,
+          "amount": total,
+          "payer_email": "testing@domain.com",
+          "description": "Invoice Demo #123"
+        },
+        auth: {
+          username: import.meta.env.VITE_API_KEY
+        }
+      })
+
+      console.log(data);
     }
   }
 })

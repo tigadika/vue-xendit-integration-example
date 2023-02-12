@@ -1,4 +1,18 @@
-let str = "Samsung's new variant which goes beyond Galaxy to the Universe"
+let arr = [
+  {
+    total: 500
+  },
+  {
+    total: 400
+  },
+  {
+    total: 300
+  },
+]
 
-const format = str.split(" ").slice(0, 8).join(" ").concat("... ")
-console.log(format);
+const total = arr.reduce((acc, val) => {
+  console.log(acc, val);
+  return acc + val.total
+}, 0)
+
+console.log(total);
