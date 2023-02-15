@@ -41,17 +41,7 @@ export const useProductStore = defineStore({
     },
     async checkoutHandler(total) {
       const { data } = await axios({
-        method: "post",
-        url: "https://api.xendit.co/v2/invoices",
-        data: {
-          "external_id": `invoice-${Date.now()}`,
-          "amount": total,
-          "payer_email": "testing@domain.com",
-          "description": "Invoice Demo #123"
-        },
-        auth: {
-          username: import.meta.env.VITE_API_KEY
-        }
+
       })
 
       console.log(data);
