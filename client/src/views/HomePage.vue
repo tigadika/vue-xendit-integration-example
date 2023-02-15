@@ -36,7 +36,9 @@
         <ButtonPage />
       </div>
     </div>
-    <CheckoutButton v-if="cart.length !== 0" />
+    <Transition name="slide">
+      <CheckoutButton v-if="cart.length !== 0" />
+    </Transition>
     <div class="w-full py-8 mt-10 text-center">
       Demo made with love by tigadika
     </div>
@@ -78,4 +80,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+</style>
