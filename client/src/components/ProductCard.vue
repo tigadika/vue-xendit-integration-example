@@ -62,10 +62,26 @@ export default {
   methods: {
     cartAction() {
       this.cart.push(this.product);
+      this.$swal({
+        icon: "success",
+        title: "Added to Cart",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     },
     deleteFromCart() {
       this.cart = this.cart.filter((el) => {
         return el.title !== this.product.title;
+      });
+      this.$swal({
+        icon: "warning",
+        title: "Removed from Cart",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
       });
     },
   },
